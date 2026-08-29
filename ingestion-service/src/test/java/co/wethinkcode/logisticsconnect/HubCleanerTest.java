@@ -49,4 +49,13 @@ public class HubCleanerTest {
         assertEquals("false", hubCleaner.normaliseBoolean("N"));
         assertEquals("false", hubCleaner.normaliseBoolean("no"));
     }
+
+    @Test
+    void testToTitleCase(){
+        HubCleaner cleaner = new HubCleaner();
+
+        assertEquals("Gauteng", cleaner.toTitleCase("gauteng"));
+        assertEquals("Western Cape", cleaner.toTitleCase("western cape"));
+        assertEquals("Gauteng", cleaner.toTitleCase("GAUTENG"));
+    }
 }

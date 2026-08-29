@@ -20,4 +20,10 @@ public class HubCleaner {
         }
         return null;
     }
+
+    //Convert to titlecase
+    public String toTitleCase(String text){
+        return "";
+    }
+
 }
