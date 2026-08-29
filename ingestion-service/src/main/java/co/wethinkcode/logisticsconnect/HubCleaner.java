@@ -23,7 +23,18 @@ public class HubCleaner {
 
     //Convert to titlecase
     public String toTitleCase(String text){
-        return "";
+
+        String [] words = text.split(" ");
+        String results = "";
+        for (String word: words){
+            String i = word.substring(0,1);
+            //System.out.println(i);
+            String restOfWord = word.substring(1);
+            //System.out.println(restOfWord);
+            //return i.toUpperCase()+restOfWord.toLowerCase();
+            results+= i.toUpperCase()+ restOfWord.toLowerCase()+" ";
+        }
+        return results.trim();
     }
 
 }
