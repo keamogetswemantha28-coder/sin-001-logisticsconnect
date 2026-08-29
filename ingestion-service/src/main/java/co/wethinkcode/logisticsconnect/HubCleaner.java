@@ -28,10 +28,9 @@ public class HubCleaner {
         String results = "";
         for (String word: words){
             String i = word.substring(0,1);
-            //System.out.println(i);
+
             String restOfWord = word.substring(1);
-            //System.out.println(restOfWord);
-            //return i.toUpperCase()+restOfWord.toLowerCase();
+
             results+= i.toUpperCase()+ restOfWord.toLowerCase()+" ";
         }
         return results.trim();
@@ -40,6 +39,10 @@ public class HubCleaner {
     //To lower case
     public String statusToLowerCase(String value){
         return value.trim().toLowerCase();
+    }
+
+    public String hubIdToUpperCase(String hubId){
+        return hubId.trim().toUpperCase();
     }
 
 }

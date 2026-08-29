@@ -25,15 +25,6 @@ public class HubCleanerTest {
         assertEquals("Johannesburg Hub", results);
     }
 
-//    "TRUE" → "true"
-//            "1" → "true"
-//            "Y" → "true"
-//            "yes" → "true"
-//            "FALSE" → "false"
-//            "0" → "false"
-//            "N" → "false"
-//            "no" → "false"
-
     @Test
     void normaliseBoolean_ReturnsTheCorrectValue(){
         HubCleaner hubCleaner = new HubCleaner();
@@ -60,8 +51,14 @@ public class HubCleanerTest {
     }
 
     @Test
-    void toLowerCase_ShouldLowerStatusValues(){
+    void statusToLowerCase_ShouldLowerStatusValues(){
         HubCleaner cleaner = new HubCleaner();
         assertEquals("active", cleaner.statusToLowerCase("ACTIVE"));
+    }
+
+    @Test
+    void hubIdToUppercase_ShouldUpperCaseHubIds(){
+        HubCleaner cleaner = new HubCleaner();
+        assertEquals("H-502", cleaner.hubIdToUpperCase("h-502"));
     }
 }
