@@ -58,4 +58,10 @@ public class HubCleanerTest {
         assertEquals("Western Cape", cleaner.toTitleCase("western cape"));
         assertEquals("Gauteng", cleaner.toTitleCase("GAUTENG"));
     }
+
+    @Test
+    void toLowerCase_ShouldLowerStatusValues(){
+        HubCleaner cleaner = new HubCleaner();
+        assertEquals("active", cleaner.statusToLowerCase("ACTIVE"));
+    }
 }

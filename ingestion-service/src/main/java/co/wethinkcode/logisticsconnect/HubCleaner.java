@@ -37,4 +37,9 @@ public class HubCleaner {
         return results.trim();
     }
 
+    //To lower case
+    public String statusToLowerCase(String value){
+        return value.trim().toLowerCase();
+    }
+
 }
