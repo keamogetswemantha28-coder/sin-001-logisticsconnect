@@ -45,4 +45,13 @@ public class HubCleaner {
         return hubId.trim().toUpperCase();
     }
 
+    //Placeholder Values should return null
+    public String placeholderValues(String value) {
+        Set<String> placeholders = Set.of("N/A", "", "TBD", "-", "unknown", "NaN", "n/a");
+        if (placeholders.contains(value)) {
+            return null;
+        }
+        return value;
+    }
+
 }

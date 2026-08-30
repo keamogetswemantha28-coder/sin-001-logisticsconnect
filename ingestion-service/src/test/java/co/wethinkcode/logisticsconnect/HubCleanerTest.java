@@ -2,8 +2,7 @@ package co.wethinkcode.logisticsconnect;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HubCleanerTest {
 
@@ -60,5 +59,25 @@ public class HubCleanerTest {
     void hubIdToUppercase_ShouldUpperCaseHubIds(){
         HubCleaner cleaner = new HubCleaner();
         assertEquals("H-502", cleaner.hubIdToUpperCase("h-502"));
+    }
+
+//    "N/A" → null
+//            "n/a" → null
+//            "TBD" → null
+//            "unknown" → null
+//            "-" → null
+//            "" (blank) → null
+//            "NaN" → null
+    @Test
+    void placeholderValues_ShouldReturnNull(){
+        HubCleaner cleaner = new HubCleaner();
+
+        assertNull(cleaner.placeholderValues("N/A"));
+        assertNull(cleaner.placeholderValues("n/a"));
+        assertNull(cleaner.placeholderValues("TBD"));
+        assertNull(cleaner.placeholderValues("unknown"));
+        assertNull(cleaner.placeholderValues("-"));
+        assertNull(cleaner.placeholderValues(""));
+        assertNull(cleaner.placeholderValues("NaN"));
     }
 }
