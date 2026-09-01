@@ -61,13 +61,7 @@ public class HubCleanerTest {
         assertEquals("H-502", cleaner.hubIdToUpperCase("h-502"));
     }
 
-//    "N/A" → null
-//            "n/a" → null
-//            "TBD" → null
-//            "unknown" → null
-//            "-" → null
-//            "" (blank) → null
-//            "NaN" → null
+
     @Test
     void placeholderValues_ShouldReturnNull(){
         HubCleaner cleaner = new HubCleaner();
@@ -80,4 +74,5 @@ public class HubCleanerTest {
         assertNull(cleaner.placeholderValues(""));
         assertNull(cleaner.placeholderValues("NaN"));
     }
+
 }
