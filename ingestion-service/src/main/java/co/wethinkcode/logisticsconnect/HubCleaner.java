@@ -24,6 +24,10 @@ public class HubCleaner {
     //Convert to titlecase
     public String toTitleCase(String text){
 
+        if (text == null || text.isEmpty()){
+            return text;
+        }
+
         String [] words = text.split(" ");
         String results = "";
         for (String word: words){
