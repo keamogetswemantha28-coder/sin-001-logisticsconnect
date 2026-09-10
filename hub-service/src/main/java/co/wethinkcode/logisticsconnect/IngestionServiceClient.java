@@ -12,7 +12,19 @@ import java.util.List;
 
 public class IngestionServiceClient {
     public List<Hub> fetchData(){
+        try {
+            HttpClient client = HttpClient.newHttpClient();
 
+            HttpRequest request = HttpRequest.newBuilder().uri(URI
+                    .create("http://localhost:7050/hubs")).GET().build();
+
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            ObjectMapper objectMapper = new ObjectMapper();
+
+            return objectMapper.readValue(response.body(), new TypeReference<List<Hub>>() {});
+        } catch (Exception e) {
+            e.printStackTrace();
             return new ArrayList<>();
+        }
     }
 }
