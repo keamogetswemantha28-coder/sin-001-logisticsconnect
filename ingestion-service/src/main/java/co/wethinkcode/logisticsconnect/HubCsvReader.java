@@ -20,7 +20,13 @@ public class HubCsvReader {
             String [] row;
             while ((row = reader.readNext()) != null){
                 String hubId = cleaner.hubIdToUpperCase(cleaner.cleanWhiteSpace(row[0]));
-                String province = cleaner.toTitleCase(cleaner.cleanWhiteSpace(row[1]));
+
+                String rawProvince = cleaner.cleanWhiteSpace(row[1]);
+                String province = cleaner.placeholderValues(rawProvince);
+
+                if (province != null){
+                    province = cleaner.toTitleCase(province);
+                }
                 String sortingCenter = cleaner.cleanWhiteSpace(row[2]);
                 String activeStr = cleaner.normaliseBoolean(cleaner.cleanWhiteSpace(row[3]));
                 boolean active = "true".equals(activeStr);
