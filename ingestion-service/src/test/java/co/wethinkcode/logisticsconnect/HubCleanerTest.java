@@ -50,6 +50,14 @@ public class HubCleanerTest {
     }
 
     @Test
+    void normaliseProvince_ShouldCollapseKwaZuluNatalVariants(){
+        HubCleaner cleaner = new HubCleaner();
+        assertEquals("KwaZulu-Natal", cleaner.normaliseProvince("Kwa-Zulu Natal"));
+        assertEquals("KwaZulu-Natal", cleaner.normaliseProvince("KwaZulu Natal"));
+        assertEquals("KwaZulu-Natal", cleaner.normaliseProvince("kwazulu-natal"));
+    }
+
+    @Test
     void statusToLowerCase_ShouldLowerStatusValues(){
         HubCleaner cleaner = new HubCleaner();
         assertEquals("active", cleaner.statusToLowerCase("ACTIVE"));

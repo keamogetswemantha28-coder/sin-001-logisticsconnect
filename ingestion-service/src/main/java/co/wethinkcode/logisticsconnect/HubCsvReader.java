@@ -25,7 +25,7 @@ public class HubCsvReader {
                 String province = cleaner.placeholderValues(rawProvince);
 
                 if (province != null){
-                    province = cleaner.toTitleCase(province);
+                    province = cleaner.normaliseProvince(province);
                 }
                 String sortingCenter = cleaner.cleanWhiteSpace(row[2]);
                 String activeStr = cleaner.normaliseBoolean(cleaner.cleanWhiteSpace(row[3]));
