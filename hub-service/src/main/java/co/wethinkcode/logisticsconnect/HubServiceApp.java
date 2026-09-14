@@ -11,5 +11,12 @@ public class HubServiceApp {
 
         // TODO (Serves provinces and sorting centers (place-name source of truth).)
         // Add domain endpoints for hub-service here.
+        app.get("/hubs", context -> context.result("OK"));
+        app.get("/hubs/{hubId", context -> {
+            String id = context.pathParam("hubId");
+
+            //convert id to integer
+            int hubId = Integer.valueOf(id);
+        });
     }
 }
