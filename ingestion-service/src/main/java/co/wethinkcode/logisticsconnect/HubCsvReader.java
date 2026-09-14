@@ -29,7 +29,13 @@ public class HubCsvReader {
                 }
                 String sortingCenter = cleaner.cleanWhiteSpace(row[2]);
                 String activeStr = cleaner.normaliseBoolean(cleaner.cleanWhiteSpace(row[3]));
-                boolean active = "true".equals(activeStr);
+
+                Boolean active;
+                if (activeStr == null){
+                    active = null;
+                }else {
+                    active = Boolean.valueOf(activeStr);
+                }
 
                 Hub hub = new Hub(hubId, province,sortingCenter,active);
                 hubs.add(hub);

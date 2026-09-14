@@ -34,6 +34,18 @@ public class HubCsvReaderTest {
 
         assertNull(h508.province());
     }
+
+    @Test
+    void readAndClean_H511ShouldHaveNullActive(){
+        HubCsvReader csvReader = new HubCsvReader();
+        List<Hub> hubs = csvReader.readAndClean();
+
+        Hub h511 = hubs.stream().filter(h -> "H-511".equalsIgnoreCase(h.hubId())).findFirst()
+                .orElseThrow();
+
+        assertNull(h511.active());
+
+    }
     @Test
     void readAndClean_returnsCleanedValidData(){
         //Arrange
