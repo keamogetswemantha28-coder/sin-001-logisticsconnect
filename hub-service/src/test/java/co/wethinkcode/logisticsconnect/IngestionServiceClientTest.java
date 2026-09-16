@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class IngestionServiceClientTest {
     @Test
-    void fetchDataDoesNotReturnAnEmptyList(){
+    void fetchData_ShouldReturnHubs_WhenIngestionServiceIsRunning(){
 
         IngestionServiceClient serviceClient = new IngestionServiceClient();
 

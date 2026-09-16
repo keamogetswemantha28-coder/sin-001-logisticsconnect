@@ -19,12 +19,17 @@ public class IngestionServiceClient {
                     .create("http://localhost:7050/hubs")).GET().build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() !=200){
+                System.out.println("Ingestion Service returned status: "+ response.statusCode());
+                return null;
+            }
             ObjectMapper objectMapper = new ObjectMapper();
 
             return objectMapper.readValue(response.body(), new TypeReference<List<Hub>>() {});
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<>();
+            return null;
         }
     }
 }
