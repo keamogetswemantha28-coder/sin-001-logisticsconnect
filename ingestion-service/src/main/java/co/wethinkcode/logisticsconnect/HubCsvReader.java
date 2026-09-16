@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HubCsvReader {
 
@@ -50,7 +52,16 @@ public class HubCsvReader {
         } catch (IOException | CsvException e) {
             e.printStackTrace();
         }
-        return hubs;
+        return removeDuplicates(hubs);
+    }
+
+    public List<Hub> removeDuplicates(List<Hub> hubs){
+        Map<String, Hub> byKey = new LinkedHashMap<>();
+        for (Hub hub: hubs){
+            String key = (hub.province() + "|" + hub.sortingCenter()).toLowerCase();
+            byKey.put(key, hub);
+        }
+        return new ArrayList<>(byKey.values());
     }
 
 }

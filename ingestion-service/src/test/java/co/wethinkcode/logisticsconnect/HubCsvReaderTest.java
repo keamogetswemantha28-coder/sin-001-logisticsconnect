@@ -44,8 +44,18 @@ public class HubCsvReaderTest {
                 .orElseThrow();
 
         assertNull(h511.active());
-
     }
+
+    @Test
+    void removeDuplicates_ShouldCollapseJohannesburgDuplicates(){
+        HubCsvReader reader = new HubCsvReader();
+        List<Hub> hubs = reader.readAndClean();
+
+        long count = hubs.stream().filter(h -> h.sortingCenter().equalsIgnoreCase("Johannesburg Central")).count();
+
+        assertEquals(1, count);
+    }
+
     @Test
     void readAndClean_returnsCleanedValidData(){
         //Arrange
