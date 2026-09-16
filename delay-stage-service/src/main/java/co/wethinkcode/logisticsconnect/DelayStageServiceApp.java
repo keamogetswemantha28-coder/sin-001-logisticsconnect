@@ -9,6 +9,9 @@ public class DelayStageServiceApp {
 
         app.get("/health", ctx -> ctx.result("OK"));
 
+        // TODO (Tracks the Transit Delay Stage (0-8, e.g. weather shutdowns).)
+        // Add domain endpoints for delay-stage-service here.
+
         DelayStageMemory memory = new DelayStageMemory();
 
         app.get("/delay-stage/{hubId}", context -> {
@@ -22,8 +25,14 @@ public class DelayStageServiceApp {
             }
         });
 
-        // TODO (Tracks the Transit Delay Stage (0-8, e.g. weather shutdowns).)
-        // Add domain endpoints for delay-stage-service here.
+        app.post("/delay-stage/{hubId}", context -> {
+            String hubId = context.pathParam("hubId");
+            DelayStageUpdate request = context.bodyAsClass(DelayStageUpdate.class);
+
+            memory.setStage(hubId, request.stage());
+            context.status(200);
+
+        });
     }
 }
 
